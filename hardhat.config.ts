@@ -1,6 +1,7 @@
 import { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
 import 'dotenv/config'
+import 'solidity-coverage'
 import './tasks/block-number'
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL
@@ -22,6 +23,13 @@ const config: HardhatUserConfig = {
     },
     etherscan: {
         apiKey: process.env.ETHERSCAN_API_KEY,
+    },
+    gasReporter: {
+        enabled: true,
+        outputFile: 'gas-report.txt',
+        noColors: true,
+        currency: 'INR',
+        coinmarketcap: process.env.COINMARKETCAP_API_KEY,
     },
 }
 
